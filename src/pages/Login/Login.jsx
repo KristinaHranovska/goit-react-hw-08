@@ -3,10 +3,11 @@ import * as Yup from "yup";
 import TitleDocument from "../../components/TitleDocument";
 import { useId } from "react";
 import { logIn } from "../../redux/auth/operation";
-import { useAuth } from "../../hooks/useAuth";
 import { initialValues } from "../../redux/auth/constants";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import style from "./Login.module.css";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { MdOutlineMailOutline } from "react-icons/md";
 
 const validation = Yup.object().shape({
   email: Yup.string().email().required("Required"),
@@ -25,11 +26,10 @@ const Login = () => {
   const dispatch = useDispatch();
   const emailId = useId();
   const passwordId = useId();
-  const { isLoggedIn } = useAuth();
 
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values));
-    isLoggedIn && actions.resetForm();
+    actions.resetForm();
   };
 
   return (
@@ -56,7 +56,7 @@ const Login = () => {
                 id={emailId}
                 placeholder="Email"
               />
-              {/* <BsPerson className={style.iconInput} size="20" /> */}
+              <MdOutlineMailOutline className={style.iconInput} size="20" />
             </div>
             <ErrorMessage
               className={style.errorSpan}
@@ -78,7 +78,7 @@ const Login = () => {
                 id={passwordId}
                 placeholder="Password"
               />
-              {/* <BsPhone className={style.iconInput} size="20" /> */}
+              <RiLockPasswordLine className={style.iconInput} size="20" />
             </div>
             <ErrorMessage
               className={style.errorSpan}
