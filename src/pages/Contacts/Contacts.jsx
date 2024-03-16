@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../../redux/contactsOps";
 import { selectError, selectLoading } from "../../redux/selectors";
 import ContactList from "../../components/ContactList/ContactList";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import { ThreeDots } from "react-loader-spinner";
 import style from "./Contacts.module.css";
 import TitleDocument from "../../components/TitleDocument";
+import { fetchContacts } from "../../redux/contacts/contactsOps";
 
 const Contacts = () => {
   const dispatch = useDispatch();
