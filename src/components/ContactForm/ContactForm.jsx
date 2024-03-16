@@ -5,8 +5,8 @@ import { BsPhone, BsPerson } from "react-icons/bs";
 
 import css from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { initialValues } from "../../redux/constants";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/contactsOps";
+import { initialValues } from "../../redux/contacts/constants";
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()

@@ -4,10 +4,6 @@ export const initialStateContacts = {
     error: null
 }
 
-export const initialStateFilter = {
-    name: '',
-};
-
 export const initialValues = {
     name: "",
     phone: "",
