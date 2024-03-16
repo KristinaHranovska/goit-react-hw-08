@@ -7,7 +7,6 @@ import { RiLockPasswordLine, RiUser3Line } from "react-icons/ri";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { register } from "../../redux/auth/operation";
 import { initialValuesSignUp } from "../../redux/auth/constants";
-// import { useAuth } from "../../hooks/useAuth";
 
 const validation = Yup.object().shape({
   name: Yup.string()
@@ -27,7 +26,6 @@ const validation = Yup.object().shape({
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  // const { user } = useAuth();
   const emailId = useId();
   const passwordId = useId();
   const nickId = useId();

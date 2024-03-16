@@ -16,10 +16,9 @@ const validation = Yup.object().shape({
     .matches(
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
       "Password must contain at least one number, one uppercase and one lowercase letter."
+      // Пароль повинен містити щонайменше одну цифру, одну велику та одну малу літеру.
     ),
 });
-
-// Пароль повинен містити щонайменше одну цифру, одну велику та одну малу літеру.
 
 const LoginForm = () => {
   const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com'
 
-const setAuthHeader = (token) => {
+const setAuthHeader = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
@@ -16,9 +16,7 @@ const clearAuthHeader = () => {
 export const register = createAsyncThunk('auth/register',
     async (credentials, thunkAPI) => {
         try {
-            console.log(credentials)
             const response = await axios.post('/users/signup', credentials);
-            console.log(response.data)
             setAuthHeader(response.data.token);
             return response.data;
         } catch (error) {
@@ -35,7 +33,6 @@ export const logIn = createAsyncThunk('auth/login',
         try {
             const response = await axios.post('/users/login', credentials);
             setAuthHeader(response.data.token);
-            console.log(response.data)
             return response.data;
         } catch (error) {
             console.log(error.message)
@@ -64,11 +61,13 @@ export const refreshUser = createAsyncThunk(
         const state = thunkAPI.getState();
         const persistedToken = state.auth.token;
 
-        if (persistedToken === null) return thunkAPI.rejectWithValue('Unable to fetch user');
+        if (persistedToken === null) {
+            return thunkAPI.rejectWithValue('Unable to fetch user');
+        }
 
         try {
             setAuthHeader(persistedToken);
-            const response = await axios.get('/users/me');
+            const response = await axios.get('/users/current');
             console.log(response.data)
             return response.data;
         } catch (error) {
