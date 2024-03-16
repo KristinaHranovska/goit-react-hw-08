@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { selectError, selectLoading } from "../../redux/selectors";
 import { fetchContacts } from "../../redux/contactsOps";
 import { ThreeDots } from "react-loader-spinner";
+import RouteSection from "../RouteSection/RouteSection";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,9 +21,10 @@ function App() {
   }, [dispatch]);
 
   return (
-    <div className={css.container}>
-      <h1 className={css.mainTitle}>Phonebook 📱</h1>
-      <ContactForm />
+    <>
+      <RouteSection />
+      {/* <h1 className={css.mainTitle}>Phonebook 📱</h1> */}
+      {/* <ContactForm />
       <SearchBox />
       <div className={css.containerLoader}>
         {isLoading && !error && (
@@ -38,8 +40,8 @@ function App() {
           />
         )}
       </div>
-      <ContactList />
-    </div>
+      <ContactList /> */}
+    </>
   );
 }
 
