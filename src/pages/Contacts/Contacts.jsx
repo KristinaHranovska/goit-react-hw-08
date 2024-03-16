@@ -6,6 +6,7 @@ import ContactList from "../../components/ContactList/ContactList";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import { ThreeDots } from "react-loader-spinner";
 import style from "./Contacts.module.css";
+import TitleDocument from "../../components/TitleDocument";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const Contacts = () => {
   }, [dispatch]);
   return (
     <>
+      <TitleDocument>Your contacts</TitleDocument>
       <ContactForm />
       <div className={style.containerLoader}>
         {isLoading && !error && (

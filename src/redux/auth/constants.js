@@ -7,3 +7,8 @@ export const initialStateConstant = {
     isLoggedIn: false,
     isRefreshing: false,
 }
+
+export const initialValues = {
+    email: '',
+    password: ''
+}

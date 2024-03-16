@@ -5,9 +5,9 @@ import RestrictedRoute from "../RestrictedRoute";
 import PrivateRoute from "../PrivateRoute";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
-const HomePage = lazy(() => import("../../pages/Home"));
-const RegisterPage = lazy(() => import("../../pages/Register"));
-const LoginPage = lazy(() => import("../../pages/Login"));
+const HomePage = lazy(() => import("../../pages/Home/Home"));
+const RegisterPage = lazy(() => import("../../pages/Register/Register"));
+const LoginPage = lazy(() => import("../../pages/Login/Login"));
 const ContactsPage = lazy(() => import("../../pages/Contacts/Contacts"));
 
 const RouteSection = () => {
