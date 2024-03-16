@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "../Layout";
 import RestrictedRoute from "../RestrictedRoute";
 import PrivateRoute from "../PrivateRoute";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const HomePage = lazy(() => import("../../pages/Home"));
 const RegisterPage = lazy(() => import("../../pages/Register"));
@@ -31,11 +32,12 @@ const RouteSection = () => {
             }
           />
           <Route
-            path="/tasks"
+            path="/contacts"
             element={
               <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
             }
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </>
