@@ -8,7 +8,12 @@ export const initialStateConstant = {
     isRefreshing: false,
 }
 
-export const initialValues = {
+export const initialValuesSignIn = {
     email: '',
-    password: ''
+    password: '',
+}
+export const initialValuesSignUp = {
+    name: '',
+    email: '',
+    password: '',
 }

@@ -1,47 +1,74 @@
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import TitleDocument from "../../components/TitleDocument";
 import { useId } from "react";
-import { logIn } from "../../redux/auth/operation";
-import { initialValues } from "../../redux/auth/constants";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import style from "./Login.module.css";
-import { RiLockPasswordLine } from "react-icons/ri";
+import style from "./RegisterForm.module.css";
+import { RiLockPasswordLine, RiUser3Line } from "react-icons/ri";
 import { MdOutlineMailOutline } from "react-icons/md";
+import { register } from "../../redux/auth/operation";
+import { initialValuesSignUp } from "../../redux/auth/constants";
+// import { useAuth } from "../../hooks/useAuth";
 
 const validation = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Too Short!")
+    .max(20, "Too Long!")
+    .required("Required"),
   email: Yup.string().email().required("Required"),
   password: Yup.string()
-    .required()
+    .required("Required")
     .min(8)
     .matches(
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
       "Password must contain at least one number, one uppercase and one lowercase letter."
+      // Пароль повинен містити щонайменше одну цифру, одну велику та одну малу літеру.
     ),
 });
 
-// Пароль повинен містити щонайменше одну цифру, одну велику та одну малу літеру.
-
-const Login = () => {
+const RegisterForm = () => {
   const dispatch = useDispatch();
+  // const { user } = useAuth();
   const emailId = useId();
   const passwordId = useId();
+  const nickId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(logIn(values));
+    console.log(values);
+    dispatch(register(values));
     actions.resetForm();
   };
 
   return (
     <>
-      <TitleDocument>Login</TitleDocument>
       <Formik
-        initialValues={initialValues}
+        initialValues={initialValuesSignUp}
         onSubmit={handleSubmit}
         validationSchema={validation}
       >
         {({ errors, touched }) => (
           <Form className={style.containerForm}>
+            <label className={style.formLabel} htmlFor={nickId}>
+              Username
+            </label>
+
+            <div className={style.thumb}>
+              <Field
+                className={`${style.formInput} ${
+                  errors.name && touched.name && style.errorNickname
+                }`}
+                type="text"
+                name="name"
+                id={nickId}
+                placeholder="Name"
+              />
+              <RiUser3Line className={style.iconInput} size="20" />
+            </div>
+            <ErrorMessage
+              className={style.errorSpan}
+              name="name"
+              component="span"
+            />
+
             <label className={style.formLabel} htmlFor={emailId}>
               Email
             </label>
@@ -51,7 +78,7 @@ const Login = () => {
                 className={`${style.formInput} ${
                   errors.email && touched.email && style.errorEmail
                 }`}
-                type="text"
+                type="email"
                 name="email"
                 id={emailId}
                 placeholder="Email"
@@ -65,7 +92,7 @@ const Login = () => {
             />
 
             <label className={style.formLabel} htmlFor={passwordId}>
-              Phone
+              Password
             </label>
 
             <div className={style.thumb}>
@@ -74,6 +101,7 @@ const Login = () => {
                   errors.password && touched.password && style.errorPassword
                 }`}
                 type="text"
+                // type="password"
                 name="password"
                 id={passwordId}
                 placeholder="Password"
@@ -96,4 +124,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default RegisterForm;
