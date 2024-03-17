@@ -1,0 +1,16 @@
+.link {
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    font-style: normal;
+    padding-left: 16px;
+}
+
+.active {
+    color: var(--accent-color-gold);
+}
+
+.link:hover {
+    color: var(--accent-color-gold);
+}
