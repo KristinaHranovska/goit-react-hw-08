@@ -1,16 +1,19 @@
 import { selectIsLoading } from "../../redux/contacts/selectors";
-import { selectFilteredContacts } from "../../redux/filters/selectors";
+import {
+  selectFilteredContacts,
+  selectNameFilter,
+} from "../../redux/filters/selectors";
 import Contact from "../Contact/Contact";
 import css from "./ContactList.module.css";
 import { useSelector } from "react-redux";
 
 const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
-  console.log(filteredContacts);
   const isLoading = useSelector(selectIsLoading);
+  const searchValue = useSelector(selectNameFilter);
   return (
     <>
-      {filteredContacts.length === 0 && !isLoading && (
+      {filteredContacts.length === 0 && !isLoading && !searchValue && (
         <p className={css.infoText}>Your phonebook is empty 😢</p>
       )}
 
@@ -23,9 +26,9 @@ const ContactList = () => {
           ))}
         </ul>
       )}
-      {/* {filteredContacts.items.length === 0 && !isLoading ? (
+      {filteredContacts.length === 0 && searchValue && (
         <p className={css.infoText}>No contacts found 😢</p>
-      ) : ( */}
+      )}
     </>
   );
 };

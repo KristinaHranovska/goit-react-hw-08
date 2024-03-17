@@ -6,5 +6,5 @@ export const initialStateContacts = {
 
 export const initialValues = {
     name: "",
-    phone: "",
+    number: "",
 };

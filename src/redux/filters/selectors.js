@@ -7,7 +7,7 @@ export const selectFilteredContacts = createSelector([selectNameFilter, selectIt
     if (contacts.length === 0) {
         return contacts;
     } else {
-        return contacts.items.filter((contact) =>
+        return contacts.filter((contact) =>
             contact.name.toLowerCase().includes(filterContacts.trim().toLowerCase())
         )
     }

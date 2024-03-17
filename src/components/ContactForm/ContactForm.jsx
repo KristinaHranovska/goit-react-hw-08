@@ -13,7 +13,7 @@ const FeedbackSchema = Yup.object().shape({
     .min(3, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  phone: Yup.string()
+  number: Yup.string()
     .matches(/^\d{3}-\d{3}-\d{4}$/, "Invalid phone number format")
     .required("Required"),
 });
@@ -66,10 +66,10 @@ const ContactForm = () => {
           <div className={css.thumb}>
             <Field
               className={`${css.formInput} ${
-                errors.phone && touched.phone && css.errorNumber
+                errors.number && touched.number && css.errorNumber
               }`}
               type="text"
-              name="phone"
+              name="number"
               id={numberId}
               placeholder="xxx-xxx-xxxx"
             />
@@ -77,7 +77,7 @@ const ContactForm = () => {
           </div>
           <ErrorMessage
             className={css.errorSpan}
-            name="phone"
+            name="number"
             component="span"
           />
 
