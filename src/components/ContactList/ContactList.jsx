@@ -6,12 +6,15 @@ import { useSelector } from "react-redux";
 
 const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
+  console.log(filteredContacts);
   const isLoading = useSelector(selectIsLoading);
   return (
     <>
-      {filteredContacts.length === 0 && !isLoading ? (
-        <p className={css.infoText}>No contacts found 😢</p>
-      ) : (
+      {filteredContacts.length === 0 && !isLoading && (
+        <p className={css.infoText}>Your phonebook is empty 😢</p>
+      )}
+
+      {filteredContacts.length > 0 && (
         <ul className={css.listContacts}>
           {filteredContacts.map((contact) => (
             <li className={css.itemContact} key={contact.id}>
@@ -20,10 +23,9 @@ const ContactList = () => {
           ))}
         </ul>
       )}
-
-      {filteredContacts.length === 0 && filteredContacts.length !== 0 && (
-        <p className={css.infoText}>Your phonebook is empty 😢</p>
-      )}
+      {/* {filteredContacts.items.length === 0 && !isLoading ? (
+        <p className={css.infoText}>No contacts found 😢</p>
+      ) : ( */}
     </>
   );
 };

@@ -7,6 +7,7 @@ import style from "./Contacts.module.css";
 import TitleDocument from "../../components/TitleDocument";
 import { selectError, selectIsLoading } from "../../redux/contacts/selectors";
 import { fetchContacts } from "../../redux/contacts/contactsOps";
+import SearchBox from "../../components/SearchBox/SearchBox";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ const Contacts = () => {
           />
         )}
       </div>
+      <SearchBox />
       <ContactList />
     </>
   );
