@@ -7,6 +7,7 @@ import { deleteContact, updateContact } from "../../redux/contacts/contactsOps";
 import ConfirmForm from "../ConfirmForm/ConfirmForm";
 import { useState } from "react";
 import EditForm from "../EditForm/EditForm";
+import ContainerModalForm from "../ContainerModalForm/ContainerModalForm";
 
 const Contact = ({ data: { id, number, name } }) => {
   const dispatch = useDispatch();
@@ -53,17 +54,17 @@ const Contact = ({ data: { id, number, name } }) => {
         </button>
       </div>
 
-      <ConfirmForm
-        onClick={handleDeleteItem}
-        visible={confirm}
-        setVisible={setConfirm}
-      />
-      <EditForm
-        updateContact={handleUpdateContact}
-        visible={update}
-        setVisible={setUpadate}
-        contact={currentContact}
-      />
+      <ContainerModalForm visible={confirm} setVisible={setConfirm}>
+        <ConfirmForm onClick={handleDeleteItem} setVisible={setConfirm} />
+      </ContainerModalForm>
+
+      <ContainerModalForm visible={update} setVisible={setUpadate}>
+        <EditForm
+          updateContact={handleUpdateContact}
+          contact={currentContact}
+          setVisible={setUpadate}
+        />
+      </ContainerModalForm>
     </>
   );
 };
