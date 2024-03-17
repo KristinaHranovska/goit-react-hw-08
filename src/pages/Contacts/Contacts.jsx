@@ -18,7 +18,7 @@ const Contacts = () => {
   }, [dispatch]);
   return (
     <>
-      <TitleDocument>Your contacts</TitleDocument>
+      <TitleDocument>Your contacts page</TitleDocument>
       <ContactForm />
       <div className={style.containerLoader}>
         {isLoading && !error && (
