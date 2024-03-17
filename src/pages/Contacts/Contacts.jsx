@@ -6,7 +6,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import { ThreeDots } from "react-loader-spinner";
 import style from "./Contacts.module.css";
 import TitleDocument from "../../components/TitleDocument";
-import { fetchContacts } from "../../redux/contacts/contactsOps";
+import { fetchContacts } from "../../redux/contactsOps";
 
 const Contacts = () => {
   const dispatch = useDispatch();

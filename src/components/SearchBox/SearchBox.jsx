@@ -1,9 +1,9 @@
 import css from "./SearchBox.module.css";
 import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilter } from "../../redux/filtersSlice";
 import { selectNameFilter } from "../../redux/selectors";
-import { initialStateFilter } from "../../redux/constants";
+import { changeFilter } from "../../redux/filters/filtersSlice";
+import { initialStateFilter } from "../../redux/filters/constants";
 
 const SearchBox = () => {
   const searchValue = useSelector(selectNameFilter);
