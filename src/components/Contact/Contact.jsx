@@ -3,17 +3,25 @@ import { FaRegEdit } from "react-icons/fa";
 
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/contactsOps";
+import { deleteContact, updateContact } from "../../redux/contacts/contactsOps";
 import ConfirmForm from "../ConfirmForm/ConfirmForm";
 import { useState } from "react";
+import EditForm from "../EditForm/EditForm";
 
 const Contact = ({ data: { id, number, name } }) => {
   const dispatch = useDispatch();
+
   const [confirm, setConfirm] = useState(false);
+  const [update, setUpadate] = useState(false);
+  const [currentContact, setCurrentContact] = useState(null);
 
   const handleDeleteItem = () => {
     dispatch(deleteContact(id));
     setConfirm(false);
+  };
+
+  const handleUpdateContact = (updatedData) => {
+    dispatch(updateContact(updatedData));
   };
 
   return (
@@ -33,18 +41,29 @@ const Contact = ({ data: { id, number, name } }) => {
           <BsTrash size="15" />
           Delete
         </button>
-        <button className={css.buttonDelete}>
+        <button
+          className={css.buttonDelete}
+          onClick={() => {
+            setCurrentContact({ id, name, number });
+            setUpadate(true);
+          }}
+        >
           <FaRegEdit size="15" />
           Edit
         </button>
       </div>
-      {confirm && (
-        <ConfirmForm
-          onClick={handleDeleteItem}
-          visible={confirm}
-          setVisible={setConfirm}
-        />
-      )}
+
+      <ConfirmForm
+        onClick={handleDeleteItem}
+        visible={confirm}
+        setVisible={setConfirm}
+      />
+      <EditForm
+        updateContact={handleUpdateContact}
+        visible={update}
+        setVisible={setUpadate}
+        contact={currentContact}
+      />
     </>
   );
 };
