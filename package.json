@@ -20,6 +20,7 @@
     "clsx": "^2.1.0",
     "formic": "^0.0.10",
     "formik": "^2.4.5",
+    "fuse.js": "^7.0.0",
     "modern-normalize": "^2.0.0",
     "nanoid": "^5.0.6",
     "prop-types": "^15.8.1",

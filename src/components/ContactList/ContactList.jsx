@@ -11,6 +11,7 @@ const ContactList = () => {
   const filteredContacts = useSelector(selectFilteredContacts);
   const isLoading = useSelector(selectIsLoading);
   const searchValue = useSelector(selectNameFilter);
+
   return (
     <>
       {filteredContacts.length === 0 && !isLoading && !searchValue && (
