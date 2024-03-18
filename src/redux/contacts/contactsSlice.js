@@ -5,6 +5,7 @@ import { addContact, deleteContact, fetchContacts, updateContact } from "./conta
 const handleRejected = (state, action) => {
     state.isLoading = false;
     state.error = action.payload;
+    state.deletingItem = null;
 }
 
 const contactsSlice = createSlice({
@@ -23,25 +24,30 @@ const contactsSlice = createSlice({
             .addCase(fetchContacts.rejected, handleRejected)
             .addCase(addContact.pending, (state) => {
                 state.isLoading = true;
+                state.isAddingContact = true;
             })
             .addCase(addContact.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
                 state.items.push(action.payload);
+                state.isAddingContact = false;
             })
             .addCase(addContact.rejected, handleRejected)
-            .addCase(deleteContact.pending, (state) => {
+            .addCase(deleteContact.pending, (state, action) => {
                 state.isLoading = true;
+                state.deletingItem = action.meta.arg;
             })
             .addCase(deleteContact.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.error = null;
                 const index = state.items.findIndex(contact => contact.id === action.payload.id);
                 state.items.splice(index, 1);
+                state.isDeleteContact = false;
             })
             .addCase(deleteContact.rejected, handleRejected)
             .addCase(updateContact.pending, state => {
                 state.isLoading = true;
+                state.isEditContact = true;
             })
             .addCase(updateContact.fulfilled, (state, action) => {
                 state.isLoading = false;
@@ -52,6 +58,7 @@ const contactsSlice = createSlice({
                 }
                 state.error = null;
                 state.updatingItem = null;
+                state.isEditContact = false;
             })
             .addCase(updateContact.rejected, handleRejected)
     }

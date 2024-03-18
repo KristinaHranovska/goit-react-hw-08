@@ -1,12 +1,14 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { LoadingButton } from "@mui/lab";
 import { useId } from "react";
 import * as Yup from "yup";
 import { BsPhone, BsPerson } from "react-icons/bs";
 
 import css from "./ContactForm.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/contactsOps";
 import { initialValues } from "../../redux/contacts/constants";
+import { selectIsAddingContact } from "../../redux/contacts/selectors";
 
 export const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -20,6 +22,7 @@ export const FeedbackSchema = Yup.object().shape({
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const addingContact = useSelector(selectIsAddingContact);
 
   const nameId = useId();
   const numberId = useId();
@@ -81,9 +84,15 @@ const ContactForm = () => {
             component="span"
           />
 
-          <button className={css.buttonAdd} type="submit">
-            Add Contact
-          </button>
+          {addingContact ? (
+            <LoadingButton loading variant="outlined">
+              Submit
+            </LoadingButton>
+          ) : (
+            <button className={css.buttonAdd} type="submit">
+              Add Contact
+            </button>
+          )}
         </Form>
       )}
     </Formik>

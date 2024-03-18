@@ -38,10 +38,12 @@ const Contact = ({ data: { id, number, name } }) => {
             {number}
           </p>
         </div>
+
         <button className={css.buttonDelete} onClick={() => setConfirm(true)}>
           <BsTrash size="15" />
           Delete
         </button>
+
         <button
           className={css.buttonDelete}
           onClick={() => {

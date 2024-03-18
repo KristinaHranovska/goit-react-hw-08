@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 // import style from "./EditForm.module.css";
 
@@ -57,16 +57,17 @@ const EditForm = ({ updateContact, setVisible, contact }) => {
         />
       </div>
       <div>
-        <button
+        <Button
+          variant="text"
           type="button"
           onClick={handleUpdateClick}
           disabled={!isFormValid()}
         >
           Update
-        </button>
-        <button type="button" onClick={() => setVisible(false)}>
+        </Button>
+        <Button variant="text" type="button" onClick={() => setVisible(false)}>
           Cancel
-        </button>
+        </Button>
       </div>
     </>
   );
