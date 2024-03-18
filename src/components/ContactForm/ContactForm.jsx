@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/contactsOps";
 import { initialValues } from "../../redux/contacts/constants";
 
-const FeedbackSchema = Yup.object().shape({
+export const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Too Short!")
     .max(50, "Too Long!")

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const EditForm = ({ updateContact, setVisible, contact }) => {
   const [formData, setFormData] = useState({ name: "", number: "" });
+  const [errors, setErrors] = useState({ name: "", number: "" });
 
   useEffect(() => {
     if (contact) {
@@ -17,12 +18,20 @@ const EditForm = ({ updateContact, setVisible, contact }) => {
       ...prevData,
       [name]: value,
     }));
+    if (name === "number" && !/^\d{3}-\d{3}-\d{4}$/.test(value)) {
+      setErrors({ ...errors, number: "Invalid phone number format" });
+    } else {
+      setErrors({ ...errors, number: "" });
+    }
   };
 
   const handleUpdateClick = () => {
     updateContact({ id: contact.id, ...formData });
     setVisible(false);
-    console.log(formData);
+  };
+
+  const isFormValid = () => {
+    return Object.values(errors).every((error) => error === "");
   };
 
   return (
@@ -43,10 +52,16 @@ const EditForm = ({ updateContact, setVisible, contact }) => {
           name="number"
           value={formData.number}
           onChange={handleInputChange}
+          error={!!errors.number}
+          helperText={errors.number}
         />
       </div>
       <div>
-        <button type="button" onClick={handleUpdateClick}>
+        <button
+          type="button"
+          onClick={handleUpdateClick}
+          disabled={!isFormValid()}
+        >
           Update
         </button>
         <button type="button" onClick={() => setVisible(false)}>
