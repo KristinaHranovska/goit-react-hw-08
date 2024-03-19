@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
-import styles from "./Navigation.module.css";
+import style from "./Navigation.module.css";
 import clsx from "clsx";
 
 const Navigation = () => {
@@ -8,11 +8,11 @@ const Navigation = () => {
   const location = useLocation();
   const getMenuItemClass = (to) => {
     return to === location.pathname
-      ? clsx(styles.link, styles.active)
-      : styles.link;
+      ? clsx(style.navLink, style.active)
+      : style.navLink;
   };
   return (
-    <nav>
+    <nav className={style.navMenu}>
       <NavLink to="/" className={getMenuItemClass("/")}>
         Home
       </NavLink>
