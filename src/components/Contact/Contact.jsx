@@ -13,6 +13,7 @@ import {
   selectIsEditingContact,
 } from "../../redux/contacts/selectors";
 import { CircularProgress } from "@mui/material";
+import toast, { Toaster } from "react-hot-toast";
 
 const Contact = ({ data: { id, number, name } }) => {
   const dispatch = useDispatch();
@@ -27,14 +28,25 @@ const Contact = ({ data: { id, number, name } }) => {
   const handleDeleteItem = () => {
     dispatch(deleteContact(id));
     setConfirm(false);
+    if (!isDeleteContact) {
+      toast.success("Contact successfully deleted!");
+    } else {
+      toast.error("Oops, something went wrong");
+    }
   };
 
   const handleUpdateContact = (updatedData) => {
     dispatch(updateContact(updatedData));
+    if (!isEditContact) {
+      toast.success("Contact successfully updated!");
+    } else {
+      toast.error("Oops, something went wrong");
+    }
   };
 
   return (
     <>
+      <Toaster position="top-center" reverseOrder={false} />
       <div className={css.containerContac}>
         <div className={css.thumbContact}>
           <h2 className={css.nameContact}>
