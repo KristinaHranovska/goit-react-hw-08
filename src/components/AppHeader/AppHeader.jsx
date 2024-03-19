@@ -7,9 +7,13 @@ import style from "./AppHeader.module.css";
 const AppHeader = () => {
   const { isLoggedIn } = useAuth();
   return (
-    <header className={`${style.header} ${style.container}`}>
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
+    <header className={style.container}>
+      <div className={style.navigation}>
+        <div className={style.thumb}>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </div>
+      </div>
     </header>
   );
 };

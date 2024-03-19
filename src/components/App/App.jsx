@@ -1,3 +1,4 @@
+import "../../../node_modules/modern-normalize/modern-normalize.css";
 import { useEffect } from "react";
 import RouteSection from "../RouteSection/RouteSection";
 import { refreshUser } from "../../redux/auth/operation";

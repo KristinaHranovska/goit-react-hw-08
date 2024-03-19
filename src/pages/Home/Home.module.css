@@ -1,0 +1,17 @@
+@media screen and (min-width: 768px) {
+    .bgImg {
+        width: 100vw;
+        height: 100vh;
+        background-image: url('../../assets/img/2.png'), url('../../assets/img/7492002.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom 0 right -110px;
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .bgImg {
+        background-position: right;
+    }
+}
