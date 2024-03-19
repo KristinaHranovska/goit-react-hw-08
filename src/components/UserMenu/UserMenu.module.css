@@ -23,4 +23,25 @@
     padding: 7px 20px;
     border: none;
     color: #00afd7;
+
+    transition: background-color .4s cubic-bezier(.4, 0, .2, 1), color .4s cubic-bezier(.4, 0, .2, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .avatar {
+        display: flex;
+        background-color: #e87438;
+    }
+
+    .btnLogOut:hover,
+    .btnLogOut:focus {
+        background-color: #00afd7;
+        color: #f0eafa;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .userMenu {
+        gap: 15px;
+    }
 }

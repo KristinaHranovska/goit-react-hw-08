@@ -9,8 +9,8 @@ const UserMenu = () => {
   const { user } = useAuth();
   return (
     <div className={style.userMenu}>
-      <p className={style.welcomText}>Welcom, {user.name}</p>
       <Avatar className={style.avatar}>{user.name.charAt(0)}</Avatar>
+      <p className={style.welcomText}>Welcom, {user.name}</p>
       <button
         className={style.btnLogOut}
         type="button"
