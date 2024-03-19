@@ -19,7 +19,7 @@ const SearchBox = () => {
 
   return (
     <div className={css.container}>
-      <p className={css.inputText}>Find contacts by name</p>
+      <p className={css.inputText}>Find contacts</p>
       <div className={css.container}>
         <input
           className={css.formInput}
@@ -27,6 +27,7 @@ const SearchBox = () => {
           value={searchValue}
           onChange={handelInputSearch}
         />
+
         <IoCloseOutline
           className={css.iconClean}
           size="20"

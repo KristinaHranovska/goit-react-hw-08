@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { LoadingButton } from "@mui/lab";
 import { useId } from "react";
 import * as Yup from "yup";
 import { BsPhone, BsPerson } from "react-icons/bs";
@@ -9,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/contactsOps";
 import { initialValues } from "../../redux/contacts/constants";
 import { selectIsAddingContact } from "../../redux/contacts/selectors";
+import { CircularProgress } from "@mui/material";
+import toast, { Toaster } from "react-hot-toast";
 
 export const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -29,73 +30,76 @@ const ContactForm = () => {
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
-    actions.resetForm();
+
+    if (!addingContact) {
+      toast.success("Contact successfully added!");
+    } else {
+      toast.error("Oops, something went wrong");
+    }
+    !addingContact && actions.resetForm();
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
-    >
-      {({ errors, touched }) => (
-        <Form className={css.containerForm}>
-          <label className={css.formLabel} htmlFor={nameId}>
-            Name
-          </label>
+    <>
+      <Toaster position="top-center" reverseOrder={false} />
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={FeedbackSchema}
+      >
+        {({ errors, touched }) => (
+          <Form className={css.containerForm}>
+            <label className={css.formLabel} htmlFor={nameId}>
+              Name
+            </label>
 
-          <div className={css.thumb}>
-            <Field
-              className={`${css.formInput} ${
-                errors.name && touched.name && css.errorName
-              }`}
-              type="text"
+            <div className={css.thumb}>
+              <Field
+                className={`${css.formInput} ${
+                  errors.name && touched.name && css.errorName
+                }`}
+                type="text"
+                name="name"
+                id={nameId}
+                placeholder="Name"
+              />
+              <BsPerson className={css.iconInput} size="20" />
+            </div>
+            <ErrorMessage
+              className={css.errorSpan}
               name="name"
-              id={nameId}
-              placeholder="Name"
+              component="span"
             />
-            <BsPerson className={css.iconInput} size="20" />
-          </div>
-          <ErrorMessage
-            className={css.errorSpan}
-            name="name"
-            component="span"
-          />
 
-          <label className={css.formLabel} htmlFor={numberId}>
-            Phone
-          </label>
+            <label className={css.formLabel} htmlFor={numberId}>
+              Phone
+            </label>
 
-          <div className={css.thumb}>
-            <Field
-              className={`${css.formInput} ${
-                errors.number && touched.number && css.errorNumber
-              }`}
-              type="text"
+            <div className={css.thumb}>
+              <Field
+                className={`${css.formInput} ${
+                  errors.number && touched.number && css.errorNumber
+                }`}
+                type="text"
+                name="number"
+                id={numberId}
+                placeholder="xxx-xxx-xxxx"
+              />
+              <BsPhone className={css.iconInput} size="20" />
+            </div>
+            <ErrorMessage
+              className={css.errorSpan}
               name="number"
-              id={numberId}
-              placeholder="xxx-xxx-xxxx"
+              component="span"
             />
-            <BsPhone className={css.iconInput} size="20" />
-          </div>
-          <ErrorMessage
-            className={css.errorSpan}
-            name="number"
-            component="span"
-          />
 
-          {addingContact ? (
-            <LoadingButton loading variant="outlined">
-              Submit
-            </LoadingButton>
-          ) : (
             <button className={css.buttonAdd} type="submit">
-              Add Contact
+              {addingContact ? <CircularProgress /> : "Add Contact"}
             </button>
-          )}
-        </Form>
-      )}
-    </Formik>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };
 

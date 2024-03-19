@@ -5,7 +5,8 @@ import { addContact, deleteContact, fetchContacts, updateContact } from "./conta
 const handleRejected = (state, action) => {
     state.isLoading = false;
     state.error = action.payload;
-    state.deletingItem = null;
+    state.isDeleteContact = null;
+    state.isEditContact = null;
 }
 
 const contactsSlice = createSlice({
@@ -35,7 +36,7 @@ const contactsSlice = createSlice({
             .addCase(addContact.rejected, handleRejected)
             .addCase(deleteContact.pending, (state, action) => {
                 state.isLoading = true;
-                state.deletingItem = action.meta.arg;
+                state.isDeleteContact = action.meta.arg;
             })
             .addCase(deleteContact.fulfilled, (state, action) => {
                 state.isLoading = false;
@@ -45,9 +46,9 @@ const contactsSlice = createSlice({
                 state.isDeleteContact = false;
             })
             .addCase(deleteContact.rejected, handleRejected)
-            .addCase(updateContact.pending, state => {
+            .addCase(updateContact.pending, (state, action) => {
                 state.isLoading = true;
-                state.isEditContact = true;
+                state.isEditContact = action.meta.arg.id;
             })
             .addCase(updateContact.fulfilled, (state, action) => {
                 state.isLoading = false;

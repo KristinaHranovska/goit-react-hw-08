@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -13,10 +15,6 @@ const clearAuthHeader = () => {
     axios.defaults.headers.common.Authorization = '';
 };
 
-/*
- * POST @ /users/signup
- * body: { name, email, password }
- */
 export const register = createAsyncThunk(
     'auth/register',
     async (credentials, thunkAPI) => {
@@ -24,19 +22,17 @@ export const register = createAsyncThunk(
             const res = await axios.post('/users/signup', credentials);
             // After successful registration, add the token to the HTTP header
             setAuthHeader(res.data.token);
-            console.log(credentials)
             return res.data;
         } catch (error) {
-            console.log(error.message)
+            iziToast.error({
+                title: 'Error',
+                message: 'Sorry, something went wrong during registration. Please try again or contact support',
+            });
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
 
-/*
- * POST @ /users/login
- * body: { email, password }
- */
 export const logIn = createAsyncThunk(
     'auth/login',
     async (credentials, thunkAPI) => {
@@ -44,20 +40,18 @@ export const logIn = createAsyncThunk(
             const res = await axios.post('/users/login', credentials);
             // After successful login, add the token to the HTTP header
             setAuthHeader(res.data.token);
-
-            console.log(res)
             return res.data;
         } catch (error) {
-            console.log(error.message)
+            iziToast.error({
+                title: 'Error',
+                message: 'Authorization error. Check your details and try again',
+            });
             return thunkAPI.rejectWithValue(error.message);
         }
     }
 );
 
-/*
- * POST @ /users/logout
- * headers: Authorization: Bearer token
- */
+
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     try {
         await axios.post('/users/logout');
@@ -68,10 +62,7 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
     }
 });
 
-/*
- * GET @ /users/me
- * headers: Authorization: Bearer token
- */
+
 export const refreshUser = createAsyncThunk(
     'auth/refresh',
     async (_, thunkAPI) => {

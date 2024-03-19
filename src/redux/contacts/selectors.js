@@ -7,8 +7,8 @@ export const selectIsAddingContact = state => state.contacts.isAddingContact;
 export const selectIsDeletingContact = state => state.contacts.isDeleteContact;
 export const selectIsEditingContact = state => state.contacts.isEditContact;
 
-export const selectUpdatingItem = state => {
-    const { items, updatingItem } = state.contacts;
-    return items.find(item => item.id === updatingItem) || null;
-};
+// export const selectUpdatingItem = state => {
+//     const { items, updatingItem } = state.contacts;
+//     return items.find(item => item.id === updatingItem) || null;
+// };
 

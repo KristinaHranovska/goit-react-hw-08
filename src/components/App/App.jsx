@@ -3,6 +3,7 @@ import RouteSection from "../RouteSection/RouteSection";
 import { refreshUser } from "../../redux/auth/operation";
 import { useDispatch } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
+import { LinearProgress } from "@mui/material";
 
 function App() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <LinearProgress />
   ) : (
     <>
       <RouteSection />
