@@ -16,7 +16,7 @@ const UserMenu = () => {
         type="button"
         onClick={() => dispatch(logOut())}
       >
-        SignOut
+        Sign Out
       </button>
     </div>
   );

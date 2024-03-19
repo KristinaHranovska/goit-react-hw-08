@@ -1,6 +1,52 @@
+.container {
+    min-width: 320px;
+    max-width: 375px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.mainTitle {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -.04em;
+    color: rgb(71, 71, 71);
+    margin-bottom: 20px;
+}
+
+.phone {
+    height: 350px;
+    border-radius: 100px;
+    background-color: #e87438;
+    background-image: url('../../assets/img/hero-phone.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center
+}
+
 @media screen and (min-width: 768px) {
+    .phone {
+        display: none;
+    }
+
+    .mainTitle {
+        width: 500px;
+        position: absolute;
+        top: 47%;
+        left: 33%;
+        transform: translate(-50%, -50%);
+
+        font-size: 55px;
+        font-style: italic;
+
+    }
+
+    .container {
+        max-width: 768px;
+    }
+
     .bgImg {
-        width: 100vw;
         height: 100vh;
         background-image: url('../../assets/img/2.png'), url('../../assets/img/7492002.png');
         background-repeat: no-repeat;
@@ -12,6 +58,11 @@
 
 @media screen and (min-width: 1024px) {
     .bgImg {
+        background-image: url('../../assets/img/2.png'), url('../../assets/img/7492002.png');
         background-position: right;
+    }
+
+    .container {
+        max-width: 1024px;
     }
 }

@@ -12,10 +12,10 @@ const AuthNav = () => {
   return (
     <div className={style.authMenu}>
       <NavLink className={getMenuItemClass("/register")} to="/register">
-        SignUp
+        Sign Up
       </NavLink>
       <NavLink className={getMenuItemClass("/login")} to="/login">
-        SignIn
+        Sign In
       </NavLink>
     </div>
   );
