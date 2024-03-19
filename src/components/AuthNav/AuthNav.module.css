@@ -31,8 +31,7 @@
         gap: 10px;
     }
 
-    .link:hover,
-    .link:focus {
+    .link:hover {
         background-color: #e1dae9;
         box-shadow: 0 1px 1px #00000024, 0 1px 3px #0000001f, 0 2px 1px #0003;
         color: #00afd7;
