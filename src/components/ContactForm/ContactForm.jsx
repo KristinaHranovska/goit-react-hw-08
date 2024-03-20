@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useId, useState } from "react";
+import { useId } from "react";
 import * as Yup from "yup";
 import { BsPhone, BsPerson } from "react-icons/bs";
 
@@ -9,7 +9,6 @@ import { addContact } from "../../redux/contacts/contactsOps";
 import { initialValues } from "../../redux/contacts/constants";
 import { selectIsAddingContact } from "../../redux/contacts/selectors";
 import { CircularProgress } from "@mui/material";
-import toast, { Toaster } from "react-hot-toast";
 
 export const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -17,41 +16,27 @@ export const FeedbackSchema = Yup.object().shape({
     .max(50, "Too Long!")
     .required("Required"),
   number: Yup.string()
-    .matches(/^\d{3}-\d{3}-\d{4}$/, "Invalid phone number format")
+    .matches(
+      /^\d{3}-\d{3}-\d{4}$/,
+      "Invalid phone number format (xxx-xxx-xxxx)"
+    )
     .required("Required"),
 });
 
 const ContactForm = () => {
   const dispatch = useDispatch();
   const addingContact = useSelector(selectIsAddingContact);
-  const [phoneNumber, setPhoneNumber] = useState("");
 
   const nameId = useId();
   const numberId = useId();
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values));
-
-    if (!addingContact) {
-      toast.success("Contact successfully added!");
-    } else {
-      toast.error("Oops, something went wrong");
-    }
     !addingContact && actions.resetForm();
-  };
-
-  const handlePhoneNumberValidation = (event) => {
-    const inputPhoneNumber = event.target.value;
-    if (inputPhoneNumber.length === 3 || inputPhoneNumber.length === 7) {
-      setPhoneNumber(inputPhoneNumber + "-");
-    } else {
-      setPhoneNumber(inputPhoneNumber);
-    }
   };
 
   return (
     <div className={css.thumbForm}>
-      <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
@@ -95,8 +80,6 @@ const ContactForm = () => {
                 id={numberId}
                 placeholder="xxx-xxx-xxxx"
                 maxLength={12}
-                value={phoneNumber}
-                onInput={handlePhoneNumberValidation}
               />
               <BsPhone className={css.iconInput} size="20" />
             </div>
