@@ -20,7 +20,7 @@ const SearchBox = () => {
   return (
     <div className={css.container}>
       <p className={css.inputText}>Find contacts</p>
-      <div className={css.container}>
+      <div className={css.thumbInput}>
         <input
           className={css.formInput}
           type="text"
