@@ -10,6 +10,7 @@ const Home = () => {
           <h1 className={style.mainTitle}>
             My Phone Book: Manage your contacts
           </h1>
+
           <div className={style.phone}></div>
         </div>
       </section>

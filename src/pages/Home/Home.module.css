@@ -6,40 +6,36 @@
 }
 
 .mainTitle {
+    width: 350px;
     text-align: center;
     font-size: 38px;
     font-weight: 500;
     line-height: 1.1;
     letter-spacing: -.04em;
     color: rgb(71, 71, 71);
-    margin-bottom: 20px;
+
+    padding-top: 66%;
 }
 
-.phone {
-    height: 350px;
-    border-radius: 100px;
-    background-color: #e87438;
-    background-image: url('../../assets/img/hero-phone.webp');
+.bgImg {
+    height: 100vh;
+    background-image: url('../../assets/img/bg-mobile.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center
+    background-position: unset;
 }
 
 @media screen and (min-width: 768px) {
-    .phone {
-        display: none;
-    }
-
     .mainTitle {
         width: 500px;
         position: absolute;
         top: 47%;
-        left: 33%;
+        left: 35%;
         transform: translate(-50%, -50%);
 
         font-size: 55px;
         font-style: italic;
-
+        padding-top: 0;
     }
 
     .container {
@@ -49,8 +45,6 @@
     .bgImg {
         height: 100vh;
         background-image: url('../../assets/img/2.png'), url('../../assets/img/7492002.png');
-        background-repeat: no-repeat;
-        background-size: cover;
         background-position: bottom 0 right -110px;
     }
 }
@@ -58,8 +52,7 @@
 
 @media screen and (min-width: 1024px) {
     .bgImg {
-        background-image: url('../../assets/img/2.png'), url('../../assets/img/7492002.png');
-        background-position: right;
+        background-position: 40% 80%, right;
     }
 
     .container {

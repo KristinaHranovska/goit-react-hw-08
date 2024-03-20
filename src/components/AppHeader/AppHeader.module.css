@@ -1,8 +1,18 @@
 .container {
     min-width: 320px;
     max-width: 375px;
-    margin: 0 auto 20px;
-    padding: 10px;
+    /* margin: 0 auto;
+    padding: 10px; */
+}
+
+.navigation {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+
+.thumb {
+    padding: 10px 0;
 }
 
 @media screen and (min-width: 768px) {
@@ -10,12 +20,6 @@
         max-width: 768px;
         padding: 0;
         margin: 0;
-    }
-
-    .navigation {
-        position: fixed;
-        z-index: 5;
-        width: 100%;
     }
 
     .thumb {
