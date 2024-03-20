@@ -5,6 +5,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import TitleDocument from "../../components/TitleDocument";
 import { fetchContacts } from "../../redux/contacts/contactsOps";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import style from "./Contacts.module.css";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -14,10 +15,14 @@ const Contacts = () => {
   }, [dispatch]);
   return (
     <>
-      <TitleDocument>Your contacts page</TitleDocument>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
+      <section>
+        <div className={style.bgImgContacts}>
+          <TitleDocument>Your contacts page</TitleDocument>
+          <ContactForm />
+          {/* <SearchBox />
+          <ContactList /> */}
+        </div>
+      </section>
     </>
   );
 };

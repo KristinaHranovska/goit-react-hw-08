@@ -1,5 +1,5 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useId } from "react";
+import { useId, useState } from "react";
 import * as Yup from "yup";
 import { BsPhone, BsPerson } from "react-icons/bs";
 
@@ -24,6 +24,7 @@ export const FeedbackSchema = Yup.object().shape({
 const ContactForm = () => {
   const dispatch = useDispatch();
   const addingContact = useSelector(selectIsAddingContact);
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const nameId = useId();
   const numberId = useId();
@@ -39,8 +40,17 @@ const ContactForm = () => {
     !addingContact && actions.resetForm();
   };
 
+  const handlePhoneNumberValidation = (event) => {
+    const inputPhoneNumber = event.target.value;
+    if (inputPhoneNumber.length === 3 || inputPhoneNumber.length === 7) {
+      setPhoneNumber(inputPhoneNumber + "-");
+    } else {
+      setPhoneNumber(inputPhoneNumber);
+    }
+  };
+
   return (
-    <>
+    <div className={css.thumbForm}>
       <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={initialValues}
@@ -84,6 +94,9 @@ const ContactForm = () => {
                 name="number"
                 id={numberId}
                 placeholder="xxx-xxx-xxxx"
+                maxLength={12}
+                value={phoneNumber}
+                onInput={handlePhoneNumberValidation}
               />
               <BsPhone className={css.iconInput} size="20" />
             </div>
@@ -94,12 +107,16 @@ const ContactForm = () => {
             />
 
             <button className={css.buttonAdd} type="submit">
-              {addingContact ? <CircularProgress /> : "Add Contact"}
+              {addingContact ? (
+                <CircularProgress className={css.progress} size={15} />
+              ) : (
+                "Add Contact"
+              )}
             </button>
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 
