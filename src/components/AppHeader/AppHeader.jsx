@@ -1,15 +1,32 @@
+import { useEffect, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import AuthNav from "../AuthNav/AuthNav";
 import Navigation from "../Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
 import style from "./AppHeader.module.css";
+import clsx from "clsx";
 
 const AppHeader = () => {
   const { isLoggedIn } = useAuth();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 0;
+      setScrolled(isScrolled);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <header className={style.container}>
       <div className={style.navigation}>
-        <div className={style.thumb}>
+        <div
+          className={clsx(style.thumb, {
+            [style.transparency]: scrolled,
+          })}
+        >
           <Navigation />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </div>

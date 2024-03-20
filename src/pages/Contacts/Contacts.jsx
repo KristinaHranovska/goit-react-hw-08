@@ -16,11 +16,12 @@ const Contacts = () => {
   return (
     <>
       <section>
-        <div className={style.bgImgContacts}>
-          <TitleDocument>Your contacts page</TitleDocument>
+        <div className={style.bgImgContacts}></div>
+        <TitleDocument>Your contacts page</TitleDocument>
+        <div className={style.positionSection}>
           <ContactForm />
-          {/* <SearchBox />
-          <ContactList /> */}
+          <SearchBox />
+          <ContactList />
         </div>
       </section>
     </>

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import TitleDocument from "../../components/TitleDocument";
 import style from "./Home.module.css";
 
@@ -10,8 +11,9 @@ const Home = () => {
           <h1 className={style.mainTitle}>
             My Phone Book: Manage your contacts
           </h1>
-
-          <div className={style.phone}></div>
+          <NavLink className={style.btnContacts} to="/contacts">
+            Go to contacts
+          </NavLink>
         </div>
       </section>
     </>
