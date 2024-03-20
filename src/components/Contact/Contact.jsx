@@ -50,7 +50,7 @@ const Contact = ({ data: { id, number, name } }) => {
         <div className={css.thumbBtn}>
           <button className={css.buttonAction} onClick={() => setConfirm(true)}>
             {isDeleteContact ? (
-              <CircularProgress />
+              <CircularProgress size={15} />
             ) : (
               <>
                 <BsTrash className={css.iconContact} size="15" /> Delete
@@ -65,7 +65,7 @@ const Contact = ({ data: { id, number, name } }) => {
             }}
           >
             {isEditContact ? (
-              <CircularProgress />
+              <CircularProgress size={15} />
             ) : (
               <>
                 <FaRegEdit className={css.iconContact} size="15" /> Edit

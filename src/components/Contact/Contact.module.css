@@ -40,12 +40,15 @@
 .buttonAction {
     display: flex;
     align-items: stretch;
+    justify-content: center;
     gap: 5px;
+
+    width: 105px;
 
     border-radius: 50px;
     background-color: #e1dae9;
     box-shadow: 0 1px 1px #00000024, 0 1px 3px #0000001f, 0 2px 1px #0003;
-    padding: 7px 20px;
+    padding: 7px 0;
     border: none;
     color: #00afd7;
 

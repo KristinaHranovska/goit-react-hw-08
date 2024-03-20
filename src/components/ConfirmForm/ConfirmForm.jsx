@@ -1,16 +1,23 @@
-// import style from "./ConfirmForm.module.css";
-import { Button } from "@mui/material";
+import style from "./ConfirmForm.module.css";
 
 const ConfirmForm = ({ onClick, setVisible }) => {
   return (
     <>
-      <p>Do you really want to delete the contact?</p>
-      <Button type="button" onClick={onClick}>
-        Yes
-      </Button>
-      <Button type="button" onClick={() => setVisible(false)}>
-        No
-      </Button>
+      <p className={style.modalDelete}>
+        Do you really want to delete the contact?
+      </p>
+      <div className={style.thumbBtnAction}>
+        <button className={style.btnAction} type="button" onClick={onClick}>
+          Yes
+        </button>
+        <button
+          className={style.btnAction}
+          type="button"
+          onClick={() => setVisible(false)}
+        >
+          No
+        </button>
+      </div>
     </>
   );
 };

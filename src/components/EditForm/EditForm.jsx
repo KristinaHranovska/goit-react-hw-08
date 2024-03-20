@@ -1,6 +1,6 @@
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
-// import style from "./EditForm.module.css";
+import style from "./EditForm.module.css";
 
 const EditForm = ({ updateContact, setVisible, contact }) => {
   const [formData, setFormData] = useState({ name: "", number: "" });
@@ -36,8 +36,9 @@ const EditForm = ({ updateContact, setVisible, contact }) => {
 
   return (
     <>
-      <div>
+      <div className={style.thumbInputEdit}>
         <TextField
+          className={style.input}
           id="outlined-basic"
           label="Name"
           variant="outlined"
@@ -56,18 +57,22 @@ const EditForm = ({ updateContact, setVisible, contact }) => {
           helperText={errors.number}
         />
       </div>
-      <div>
-        <Button
-          variant="text"
+      <div className={style.thumbBtnEdit}>
+        <button
+          className={style.btnActionEdit}
           type="button"
           onClick={handleUpdateClick}
           disabled={!isFormValid()}
         >
           Update
-        </Button>
-        <Button variant="text" type="button" onClick={() => setVisible(false)}>
+        </button>
+        <button
+          className={style.btnActionEdit}
+          type="button"
+          onClick={() => setVisible(false)}
+        >
           Cancel
-        </Button>
+        </button>
       </div>
     </>
   );
