@@ -13,7 +13,7 @@ const Navigation = () => {
   };
   return (
     <nav className={style.navMenu}>
-      <NavLink to="/" className={getMenuItemClass("/")}>
+      <NavLink to="/" className={`${getMenuItemClass("/")} ${style.marRight}`}>
         Home
       </NavLink>
       {isLoggedIn && (

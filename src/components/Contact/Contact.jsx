@@ -38,40 +38,41 @@ const Contact = ({ data: { id, number, name } }) => {
       <div className={css.containerContac}>
         <div className={css.thumbContact}>
           <h2 className={css.nameContact}>
-            <BsPerson size="22" />
+            <BsPerson className={css.iconContact} size="22" />
             {name}
           </h2>
           <p className={css.numberContact}>
-            <BsPhone size="22" />
+            <BsPhone className={css.iconContact} size="22" />
             {number}
           </p>
         </div>
 
-        <button className={css.buttonDelete} onClick={() => setConfirm(true)}>
-          {isDeleteContact ? (
-            <CircularProgress />
-          ) : (
-            <>
-              <BsTrash size="15" /> Delete
-            </>
-          )}
-        </button>
-
-        <button
-          className={css.buttonDelete}
-          onClick={() => {
-            setCurrentContact({ id, name, number });
-            setUpadate(true);
-          }}
-        >
-          {isEditContact ? (
-            <CircularProgress />
-          ) : (
-            <>
-              <FaRegEdit size="15" /> Edit
-            </>
-          )}
-        </button>
+        <div className={css.thumbBtn}>
+          <button className={css.buttonAction} onClick={() => setConfirm(true)}>
+            {isDeleteContact ? (
+              <CircularProgress />
+            ) : (
+              <>
+                <BsTrash className={css.iconContact} size="15" /> Delete
+              </>
+            )}
+          </button>
+          <button
+            className={css.buttonAction}
+            onClick={() => {
+              setCurrentContact({ id, name, number });
+              setUpadate(true);
+            }}
+          >
+            {isEditContact ? (
+              <CircularProgress />
+            ) : (
+              <>
+                <FaRegEdit className={css.iconContact} size="15" /> Edit
+              </>
+            )}
+          </button>
+        </div>
       </div>
 
       <ContainerModalForm visible={confirm} setVisible={setConfirm}>
