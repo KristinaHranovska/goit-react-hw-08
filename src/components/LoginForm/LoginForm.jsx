@@ -11,7 +11,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 const validation = Yup.object().shape({
   email: Yup.string().email().required("Required"),
   password: Yup.string()
-    .required()
+    .required("Required")
     .min(8)
     .matches(
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/,
@@ -31,7 +31,8 @@ const LoginForm = () => {
   };
 
   return (
-    <>
+    <div className={style.bgLogin}>
+      <h2 className={style.titleLogin}>Welcome</h2>
       <Formik
         initialValues={initialValuesSignIn}
         onSubmit={handleSubmit}
@@ -39,20 +40,19 @@ const LoginForm = () => {
       >
         {({ errors, touched }) => (
           <Form className={style.containerForm}>
-            <label className={style.formLabel} htmlFor={emailId}>
-              Email
-            </label>
-
             <div className={style.thumb}>
               <Field
                 className={`${style.formInput} ${
-                  errors.email && touched.email && style.errorEmail
+                  errors.email && touched.email && style.error
                 }`}
                 type="email"
                 name="email"
                 id={emailId}
-                placeholder="Email"
+                placeholder=" "
               />
+              <label className={style.formLabel} htmlFor={emailId}>
+                Email
+              </label>
               <MdOutlineMailOutline className={style.iconInput} size="20" />
             </div>
             <ErrorMessage
@@ -61,21 +61,19 @@ const LoginForm = () => {
               component="span"
             />
 
-            <label className={style.formLabel} htmlFor={passwordId}>
-              Password
-            </label>
-
             <div className={style.thumb}>
               <Field
                 className={`${style.formInput} ${
-                  errors.password && touched.password && style.errorPassword
+                  errors.password && touched.password && style.error
                 }`}
-                type="text"
-                // type="password"
+                type="password"
                 name="password"
                 id={passwordId}
-                placeholder="Password"
+                placeholder=" "
               />
+              <label className={style.formLabel} htmlFor={passwordId}>
+                Password
+              </label>
               <RiLockPasswordLine className={style.iconInput} size="20" />
             </div>
             <ErrorMessage
@@ -90,7 +88,7 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
-    </>
+    </div>
   );
 };
 
