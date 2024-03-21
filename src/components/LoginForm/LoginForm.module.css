@@ -1,3 +1,11 @@
+.loginBoy {
+    display: none;
+}
+
+.loginLamp {
+    display: none;
+}
+
 .bgLogin {
     position: fixed;
     width: 100%;
@@ -35,7 +43,6 @@
 
 .thumb {
     position: relative;
-    /* display: inline-block; */
     width: 100%;
 }
 
@@ -59,7 +66,7 @@
     left: 35px;
     transition: top 0.2s, font-size 0.2s;
     pointer-events: none;
-    color: #00afd7;
+    color: #1976d2;
 }
 
 .formInput:focus+.formLabel, .formInput:not(:placeholder-shown)+.formLabel {
@@ -68,13 +75,9 @@
     background-color: transparent;
 }
 
-.error {
-    border-color: red;
-}
-
-
 .formInput:focus {
     border-color: #1976d2;
+    background-color: transparent;
 }
 
 .iconInput {
@@ -107,6 +110,10 @@
     color: #f0eafa;
 }
 
+.error {
+    border-color: red;
+}
+
 .errorSpan {
     color: red;
     margin-top: -20px;
@@ -119,10 +126,104 @@
         background-image: linear-gradient(rgba(250, 250, 250, 0.7), rgba(250, 250, 250, 0.7)), url('../../assets/img/2.png'), url('../../assets/img/7492002.png');
         background-position: bottom 0 right;
     }
+
+    .titleLogin {
+        color: #1976d2;
+        margin-bottom: 0;
+        font-family: 'Gabriola';
+        font-size: 45px;
+        letter-spacing: 0.2em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .LogInForm {
+        width: 700px;
+        height: 450px;
+        background-color: #eb7f49;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .bgImgForm {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        width: 300px;
+        height: 430px;
+        background-image: url('../../assets/img/sign-in/Rectangle-blue.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .containerForm {
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .thumbForm {
+        position: absolute;
+        top: 25%;
+        left: 20px;
+        width: 350px;
+    }
+
+    .buttonLogin {
+        padding: 10px 20px;
+    }
+
+    .loginBoy {
+        display: block;
+        width: 250px;
+        position: absolute;
+        top: 95px;
+        right: 90px;
+    }
+
+    .loginLamp {
+        display: block;
+        position: absolute;
+        left: 10px;
+        top: -25px;
+        width: 100px;
+        height: 150px;
+    }
 }
 
 @media screen and (min-width: 1024px) {
     .bgLogin {
         background-position: 40% 80%, right;
+    }
+
+    .LogInForm {
+        width: 850px;
+        height: 500px;
+    }
+
+    .bgImgForm {
+        width: 400px;
+        height: 530px;
+    }
+
+    .thumbForm {
+        top: 35%;
+        left: 40px;
+    }
+
+    .buttonLogin {
+        padding: 15px 20px;
+    }
+
+    .loginBoy {
+        top: 50px;
+        right: 40px;
+        width: 388px;
+        height: 397px;
+    }
+
+    .loginLamp {
+        top: -80px;
+        width: 174px;
+        height: 300px;
     }
 }

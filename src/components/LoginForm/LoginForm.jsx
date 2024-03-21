@@ -7,6 +7,8 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import style from "./LoginForm.module.css";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineMailOutline } from "react-icons/md";
+import loginBoy from "../../assets/img/sign-in/signin.png";
+import loginLamp from "../../assets/img/sign-in/lampshade.png";
 
 const validation = Yup.object().shape({
   email: Yup.string().email().required("Required"),
@@ -31,64 +33,69 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={style.bgLogin}>
-      <div className={style.bgPosition}>
-        <h2 className={style.titleLogin}>Welcome</h2>
-        <Formik
-          initialValues={initialValuesSignIn}
-          onSubmit={handleSubmit}
-          validationSchema={validation}
-        >
-          {({ errors, touched }) => (
-            <Form className={style.containerForm}>
-              <div className={style.thumb}>
-                <Field
-                  className={`${style.formInput} ${
-                    errors.email && touched.email && style.error
-                  }`}
-                  type="email"
+    <section className={style.bgLogin}>
+      <div className={`${style.bgPosition} ${style.LogInForm}`}>
+        <div className={style.thumbForm}>
+          <h2 className={style.titleLogin}>Welcome back</h2>
+          <Formik
+            initialValues={initialValuesSignIn}
+            onSubmit={handleSubmit}
+            validationSchema={validation}
+          >
+            {({ errors, touched }) => (
+              <Form className={style.containerForm}>
+                <div className={style.thumb}>
+                  <Field
+                    className={`${style.formInput} ${
+                      errors.email && touched.email && style.error
+                    }`}
+                    type="email"
+                    name="email"
+                    id={emailId}
+                    placeholder=" "
+                  />
+                  <label className={style.formLabel} htmlFor={emailId}>
+                    Email
+                  </label>
+                  <MdOutlineMailOutline className={style.iconInput} size="20" />
+                </div>
+                <ErrorMessage
+                  className={style.errorSpan}
                   name="email"
-                  id={emailId}
-                  placeholder=" "
+                  component="span"
                 />
-                <label className={style.formLabel} htmlFor={emailId}>
-                  Email
-                </label>
-                <MdOutlineMailOutline className={style.iconInput} size="20" />
-              </div>
-              <ErrorMessage
-                className={style.errorSpan}
-                name="email"
-                component="span"
-              />
-              <div className={style.thumb}>
-                <Field
-                  className={`${style.formInput} ${
-                    errors.password && touched.password && style.error
-                  }`}
-                  type="password"
+                <div className={style.thumb}>
+                  <Field
+                    className={`${style.formInput} ${
+                      errors.password && touched.password && style.error
+                    }`}
+                    type="password"
+                    name="password"
+                    id={passwordId}
+                    placeholder=" "
+                  />
+                  <label className={style.formLabel} htmlFor={passwordId}>
+                    Password
+                  </label>
+                  <RiLockPasswordLine className={style.iconInput} size="20" />
+                </div>
+                <ErrorMessage
+                  className={style.errorSpan}
                   name="password"
-                  id={passwordId}
-                  placeholder=" "
+                  component="span"
                 />
-                <label className={style.formLabel} htmlFor={passwordId}>
-                  Password
-                </label>
-                <RiLockPasswordLine className={style.iconInput} size="20" />
-              </div>
-              <ErrorMessage
-                className={style.errorSpan}
-                name="password"
-                component="span"
-              />
-              <button className={style.buttonLogin} type="submit">
-                Login
-              </button>
-            </Form>
-          )}
-        </Formik>
+                <button className={style.buttonLogin} type="submit">
+                  Login
+                </button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+        <div className={style.bgImgForm}></div>
+        <img className={style.loginBoy} src={loginBoy} alt="loginBoy" />
+        <img className={style.loginLamp} src={loginLamp} alt="loginLamp" />
       </div>
-    </div>
+    </section>
   );
 };
 
