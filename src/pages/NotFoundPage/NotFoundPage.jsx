@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import style from "./NotFoundPage.module.css";
-import notFoundPage from "../../assets/img/not-found-page.png";
+import notFoundPage from "../../assets/img/not-found-page/not-found-page.png";
 import TitleDocument from "../../components/TitleDocument";
 
 const NotFoundPage = () => {
