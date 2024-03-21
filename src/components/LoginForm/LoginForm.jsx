@@ -1,11 +1,12 @@
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { useId } from "react";
+import { useId, useState } from "react";
 import { logIn } from "../../redux/auth/operation";
 import { initialValuesSignIn } from "../../redux/auth/constants";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import style from "./LoginForm.module.css";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineMailOutline } from "react-icons/md";
 import loginBoy from "../../assets/img/sign-in/signin.png";
 import loginLamp from "../../assets/img/sign-in/lampshade.png";
@@ -26,10 +27,14 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const emailId = useId();
   const passwordId = useId();
+  const [openPassword, setOpenPassword] = useState(false);
 
   const handleSubmit = (values, actions) => {
     dispatch(logIn(values));
     actions.resetForm();
+  };
+  const handelClick = () => {
+    setOpenPassword((prevState) => !prevState);
   };
 
   return (
@@ -69,7 +74,7 @@ const LoginForm = () => {
                     className={`${style.formInput} ${
                       errors.password && touched.password && style.error
                     }`}
-                    type="password"
+                    type={openPassword ? "text" : "password"}
                     name="password"
                     id={passwordId}
                     placeholder=" "
@@ -78,6 +83,19 @@ const LoginForm = () => {
                     Password
                   </label>
                   <RiLockPasswordLine className={style.iconInput} size="20" />
+                  {openPassword ? (
+                    <FaRegEye
+                      className={style.iconInputPassword}
+                      onClick={handelClick}
+                      size="25"
+                    />
+                  ) : (
+                    <FaRegEyeSlash
+                      className={style.iconInputPassword}
+                      size="25"
+                      onClick={handelClick}
+                    />
+                  )}
                 </div>
                 <ErrorMessage
                   className={style.errorSpan}

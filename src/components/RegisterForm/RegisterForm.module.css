@@ -1,3 +1,11 @@
+.loginBoy {
+    display: none;
+}
+
+.loginLamp {
+    display: none;
+}
+
 .buttonSignup {
     border-radius: 50px;
     background-color: #e1dae9;
