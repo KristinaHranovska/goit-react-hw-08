@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { useId } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import style from "../LoginForm/LoginForm.module.css";
+import styleRegist from "./RegisterForm.module.css";
 import { RiLockPasswordLine, RiUser3Line } from "react-icons/ri";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { register } from "../../redux/auth/operation";
@@ -39,8 +40,8 @@ const RegisterForm = () => {
 
   return (
     <section className={style.bgLogin}>
-      <div className={`${style.bgPosition} ${style.LogInForm}`}>
-        <div className={style.thumbForm}>
+      <div className={`${style.bgPosition} ${styleRegist.LogUpForm}`}>
+        <div className={styleRegist.thumbFormRegist}>
           <h2 className={style.titleLogin}>Sign-Up</h2>
           <Formik
             initialValues={initialValuesSignUp}
@@ -112,16 +113,20 @@ const RegisterForm = () => {
                   name="password"
                   component="span"
                 />
-                <button className={style.buttonLogin} type="submit">
-                  Login
+                <button className={styleRegist.buttonSignup} type="submit">
+                  Sign Up
                 </button>
               </Form>
             )}
           </Formik>
         </div>
-        <div className={style.bgImgForm}></div>
-        <img className={style.loginBoy} src={loginBoy} alt="loginBoy" />
-        <img className={style.loginLamp} src={loginLamp} alt="loginLamp" />
+        <div className={styleRegist.bgImgForm}></div>
+        <img className={styleRegist.loginBoy} src={loginBoy} alt="loginBoy" />
+        <img
+          className={styleRegist.loginLamp}
+          src={loginLamp}
+          alt="loginLamp"
+        />
       </div>
     </section>
   );

@@ -66,7 +66,7 @@
     left: 35px;
     transition: top 0.2s, font-size 0.2s;
     pointer-events: none;
-    color: #1976d2;
+    color: #f0eafa;
 }
 
 .formInput:focus+.formLabel, .formInput:not(:placeholder-shown)+.formLabel {
@@ -89,8 +89,8 @@
     transition: color .5s cubic-bezier(.4, 0, .2, 1);
 }
 
-.formInput:hover+.iconInput,
-.formInput:focus+.iconInput {
+.thumb:hover .iconInput,
+.thumb:focus .iconInput {
     color: #FFC42A;
 }
 
@@ -98,7 +98,7 @@
     border-radius: 50px;
     background-color: #e1dae9;
     box-shadow: 0 1px 1px #00000024, 0 1px 3px #0000001f, 0 2px 1px #0003;
-    padding: 7px 20px;
+    padding: 10px 20px;
     border: none;
     color: #00afd7;
 
@@ -128,7 +128,7 @@
     }
 
     .titleLogin {
-        color: #1976d2;
+        color: #f0eafa;
         margin-bottom: 0;
         font-family: 'Gabriola';
         font-size: 45px;
@@ -174,16 +174,16 @@
 
     .loginBoy {
         display: block;
-        width: 250px;
+        width: 350px;
         position: absolute;
-        top: 95px;
-        right: 90px;
+        top: 45px;
+        right: -8px;
     }
 
     .loginLamp {
         display: block;
         position: absolute;
-        left: 10px;
+        left: 0px;
         top: -25px;
         width: 100px;
         height: 150px;
@@ -216,9 +216,8 @@
 
     .loginBoy {
         top: 50px;
-        right: 40px;
-        width: 388px;
-        height: 397px;
+        right: 20px;
+        width: 400px;
     }
 
     .loginLamp {

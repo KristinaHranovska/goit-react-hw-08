@@ -85,7 +85,7 @@ const LoginForm = () => {
                   component="span"
                 />
                 <button className={style.buttonLogin} type="submit">
-                  Login
+                  Sign In
                 </button>
               </Form>
             )}
