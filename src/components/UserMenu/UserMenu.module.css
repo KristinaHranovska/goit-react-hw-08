@@ -34,6 +34,11 @@
         background-color: #e87438;
     }
 
+    .btnLogOut {
+        font-size: 18px;
+        padding: 10px 25px;
+    }
+
     .btnLogOut:hover {
         background-color: #00afd7;
         color: #f0eafa;
