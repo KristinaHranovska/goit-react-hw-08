@@ -1,4 +1,4 @@
-# Your phonebook
+# My Phone Book
 
 This `Web Phonebook` application allows users to store their contacts online. Users can `sign in` or `register` a new account, `add`, `edit` and `delete` contacts, and `search` by phone number or name.
 
