@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import { useAuth } from "../../hooks/useAuth";
 import { LinearProgress } from "@mui/material";
 
+import AOS from "aos";
+AOS.init();
+
 function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();

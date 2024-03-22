@@ -17,6 +17,7 @@
     "@mui/material": "^5.15.13",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.2.1",
+    "aos": "^3.0.0-beta.6",
     "axios": "^1.6.7",
     "clsx": "^2.1.0",
     "formic": "^0.0.10",

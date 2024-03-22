@@ -36,7 +36,11 @@ const ContactForm = () => {
   };
 
   return (
-    <div className={css.thumbForm}>
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-center"
+      className={css.thumbForm}
+    >
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}

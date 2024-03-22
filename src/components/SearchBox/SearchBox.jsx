@@ -4,6 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectNameFilter } from "../../redux/filters/selectors";
 import { initialStateFilter } from "../../redux/filters/constants";
 import { changeFilter } from "../../redux/filters/filtersSlice";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const SearchBox = () => {
   const searchValue = useSelector(selectNameFilter);
@@ -18,7 +21,7 @@ const SearchBox = () => {
   };
 
   return (
-    <div className={css.container}>
+    <div data-aos="zoom-in" className={css.container}>
       <p className={css.inputText}>Find contacts</p>
       <div className={css.thumbInput}>
         <input
@@ -27,7 +30,6 @@ const SearchBox = () => {
           value={searchValue}
           onChange={handelInputSearch}
         />
-
         <IoCloseOutline
           className={css.iconClean}
           size="20"

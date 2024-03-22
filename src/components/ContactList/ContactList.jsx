@@ -13,7 +13,7 @@ const ContactList = () => {
   const searchValue = useSelector(selectNameFilter);
 
   return (
-    <>
+    <div data-aos="zoom-out">
       {filteredContacts.length === 0 && !isLoading && !searchValue && (
         <p className={css.infoText}>Your phonebook is empty 😢</p>
       )}
@@ -30,7 +30,7 @@ const ContactList = () => {
       {filteredContacts.length === 0 && searchValue && (
         <p className={css.infoText}>No contacts found 😢</p>
       )}
-    </>
+    </div>
   );
 };
 

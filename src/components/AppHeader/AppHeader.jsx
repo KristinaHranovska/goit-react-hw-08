@@ -6,6 +6,10 @@ import UserMenu from "../UserMenu/UserMenu";
 import style from "./AppHeader.module.css";
 import clsx from "clsx";
 
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
+
 const AppHeader = () => {
   const { isLoggedIn } = useAuth();
   const [scrolled, setScrolled] = useState(false);
@@ -21,7 +25,7 @@ const AppHeader = () => {
 
   return (
     <header className={style.container}>
-      <div className={style.navigation}>
+      <div data-aos="fade-down" className={style.navigation}>
         <div
           className={clsx(style.thumb, {
             [style.transparency]: scrolled,

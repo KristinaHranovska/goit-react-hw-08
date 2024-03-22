@@ -40,7 +40,7 @@ const LoginForm = () => {
   return (
     <section className={style.bgLogin}>
       <div className={`${style.bgPosition} ${style.LogInForm}`}>
-        <div className={style.thumbForm}>
+        <div data-aos="fade-right" className={style.thumbForm}>
           <h2 className={style.titleLogin}>Welcome back</h2>
           <Formik
             initialValues={initialValuesSignIn}
@@ -110,8 +110,18 @@ const LoginForm = () => {
           </Formik>
         </div>
         <div className={style.bgImgForm}></div>
-        <img className={style.loginBoy} src={loginBoy} alt="loginBoy" />
-        <img className={style.loginLamp} src={loginLamp} alt="loginLamp" />
+        <img
+          data-aos="fade-left"
+          className={style.loginBoy}
+          src={loginBoy}
+          alt="loginBoy"
+        />
+        <img
+          data-aos="fade-down"
+          className={style.loginLamp}
+          src={loginLamp}
+          alt="loginLamp"
+        />
       </div>
     </section>
   );

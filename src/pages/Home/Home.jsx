@@ -6,12 +6,17 @@ const Home = () => {
   return (
     <>
       <TitleDocument>Phonebook</TitleDocument>
+
       <section className={style.bgImg}>
         <div className={style.container}>
-          <h1 className={style.mainTitle}>
+          <h1 data-aos="zoom-in" className={style.mainTitle}>
             My Phone Book: Manage your contacts
           </h1>
-          <NavLink className={style.btnContacts} to="/contacts">
+          <NavLink
+            data-aos="zoom-in"
+            className={style.btnContacts}
+            to="/contacts"
+          >
             Go to contacts
           </NavLink>
         </div>

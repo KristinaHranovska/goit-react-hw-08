@@ -47,7 +47,7 @@ const RegisterForm = () => {
   return (
     <section className={style.bgLogin}>
       <div className={`${style.bgPosition} ${styleRegist.LogUpForm}`}>
-        <div className={styleRegist.thumbFormRegist}>
+        <div data-aos="fade-right" className={styleRegist.thumbFormRegist}>
           <h2 className={style.titleLogin}>Sign-Up</h2>
           <Formik
             initialValues={initialValuesSignUp}
@@ -139,8 +139,14 @@ const RegisterForm = () => {
           </Formik>
         </div>
         <div className={styleRegist.bgImgForm}></div>
-        <img className={styleRegist.loginBoy} src={loginBoy} alt="loginBoy" />
         <img
+          data-aos="fade-left"
+          className={styleRegist.loginBoy}
+          src={loginBoy}
+          alt="loginBoy"
+        />
+        <img
+          data-aos="fade-down"
           className={styleRegist.loginLamp}
           src={loginLamp}
           alt="loginLamp"
