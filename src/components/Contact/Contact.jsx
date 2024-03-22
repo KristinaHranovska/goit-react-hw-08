@@ -35,7 +35,7 @@ const Contact = ({ data: { id, number, name } }) => {
 
   return (
     <>
-      <div className={css.containerContac}>
+      <div data-aos="zoom-out" className={css.containerContac}>
         <div className={css.thumbContact}>
           <h2 className={css.nameContact}>
             <BsPerson className={css.iconContact} size="22" />

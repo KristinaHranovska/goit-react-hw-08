@@ -6,6 +6,7 @@
     height: 100%;
     display: none;
     background-color: rgba(46, 47, 66, 0.40);
+    z-index: 99999999;
 }
 
 .backdrop.isOpen {
