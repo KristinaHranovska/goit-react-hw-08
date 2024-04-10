@@ -13,7 +13,7 @@ This `Web Phonebook` application allows users to store their contacts online. Us
 ## Technologies used
 
 - React
-- React Redux
+- React Redux Toolkit
 - React Router
 - JavaScript
 - REST API
